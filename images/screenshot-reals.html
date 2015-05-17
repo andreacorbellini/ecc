@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Elliptic Curve screenshot (&#8477;)</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
+    <script type="text/javascript" src="../interactive/ec.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic&#038;subset=latin%2Clatin-ext">
+    <link rel="stylesheet" type="text/css" href="../interactive/ec.css">
+  </head>
+  <body>
+    <main>
+      <div id="plot" class="box" style="width: 200px; height: 200px"></div>
+      <div class="box">
+        <div id="form">
+          <div id="curve-coefficients" class="parameters">
+            <p>Curve:</p>
+            <div class="parameter curve-coefficient"><label for="coefficient-a">a</label><input id="coefficient-a" name="a" value="-7" type="number" step="any"></div>
+            <div class="parameter curve-coefficient"><label for="coefficient-b">b</label><input id="coefficient-b" name="b" value="10" type="number" step="any"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <a href="#">take screenshot</a>
+    <script type="text/javascript">
+        $(function() {
+            $.ec.curve = new $.ec.reals.Base();
+            $.ec.curve.hideGrid();
+
+            $.ec.curve.getPlotRange = function() {
+                var range =
+                    $.ec.reals.Base.prototype.getPlotRange.call( this );
+                return {
+                    xMin: 2 * range.xMin, xMax: 2 * range.xMax,
+                    yMin: 2 * range.yMin, yMax: 2 * range.yMax,
+                };
+            };
+
+            $( "a" ).click(function() {
+                var png = $( "canvas" )[ 0 ].toDataURL( "image/png" );
+                $( "<img/>" ).attr( "src", png ).appendTo( "main" );
+                return false;
+            });
+        });
+    </script>
+  </body>
+</html>

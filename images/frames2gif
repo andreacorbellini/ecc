@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+if [[ "$#" != 2 ]]
+then
+    echo "usage: $0 INPUT OUTPUT" >& 2
+    exit 1
+fi
+
+atexit() {
+    [[ -d "$TMPDIR" ]] && rm -rf "$TMPDIR"
+}
+
+TMPDIR="$(mktemp -d)"
+trap atexit EXIT
+
+n=0
+
+# I found no way to make ImageMagick convert directly base64 images to gif, so
+# here I am converting base64 pngs to pngs, and afterwards pngs to gif.
+while read line
+do
+    (( n++ )) || true
+    echo -n "$n "
+    echo "$line" > "$TMPDIR/$n.txt"
+    convert "inline:$TMPDIR/$n.txt" "$TMPDIR/$n.png"
+    echo "$TMPDIR/$n.png" >> "$TMPDIR/input.txt"
+done < "$1"
+
+echo "creating gif..."
+convert \
+    -delay 3 "@$TMPDIR/input.txt" \
+    -delay 300 "$TMPDIR/$n.png" \
+    "$TMPDIR/result.gif"
+mv -f "$TMPDIR/result.gif" "$2"
