@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-width: 600px;
+}
+
+html, body, input {
+  color: #7f8d8c;
+  font-size: 1.125rem;
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  color: #000000;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+header nav ul {
+  list-style: none;
+  font-size: .9em;
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline;
+  margin: 8px;
+}
+
+header nav ul li.field {
+  margin-left: 32px;
+}
+
+header nav ul li:first-child {
+  margin-left: 0;
+}
+
+header nav ul li:last-child {
+  margin-right: 0;
+}
+
+header nav ul li a {
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+header nav ul li a.active,
+header nav ul li a:hover {
+  color: #3fc380;
+}
+
+main {
+  text-align: center;
+}
+
+label {
+  color: #000000;
+}
+
+main .box {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+main #plot {
+  width: 600px;
+  height: 600px;
+  margin: 1em .5em 0 .5em;
+}
+
+main #form {
+  margin: 2em 1em 0 1em;
+}
+
+main #summary {
+  margin: .7em .35em 0 .35em;
+}
+
+main #form .parameters p {
+  display: inline-block;
+  margin: 7px 5px 7px 0;
+  text-align: right;
+  width: 6em;
+}
+
+main #form .parameters .placeholder {
+  display: inline-block;
+  width: 5.8em;
+  margin: 0 24px 0 0;
+}
+
+main #form .parameters .parameter {
+  display: inline-block;
+  border: 1px solid #a0a0a0;
+  border-radius: 3px;
+}
+
+main #form .parameters .parameter.curve-coefficient {
+  background-color: #c2e0f8;
+}
+
+main #form .parameters .parameter.point-coordinate,
+main #form .parameters .parameter.multiplication-factor {
+  background-color: #edd078;
+}
+
+main #form .parameters .parameter.result {
+  background-color: #dd6767;
+}
+
+main #form .parameters .parameter label {
+  display: inline-block;
+  margin: 0 5px;
+  height: 100%;
+  width: 0.8em;
+  text-align: center;
+}
+
+main #form .parameters .parameter input {
+  display: inline-block;
+  margin: 1px;
+  padding: 1px 5px;
+  width: 5em;
+  border: 0 none;
+}

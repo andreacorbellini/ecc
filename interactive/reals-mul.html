@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Elliptic Curve scalar multiplication (&#8477;)</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
+    <script type="text/javascript" src="ec.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic&#038;subset=latin%2Clatin-ext">
+    <link rel="stylesheet" type="text/css" href="ec.css">
+  </head>
+  <body>
+    <header>
+      <h1>Elliptic Curve scalar multiplication (&#8477;)</h1>
+      <p>A set of tools to play with elliptic curves in real and finite fields.</p>
+      <nav>
+        <ul>
+          <li class="field">&#8477;</li>
+          <li><a href="reals-add.html">Addition</a></li>
+          <li><a href="reals-mul.html" class="active">Multiplication</a></li>
+          <li class="field">&#8484;/k</li>
+          <li><a href="modk-add.html">Addition</a></li>
+          <li><a href="modk-mul.html">Multiplication</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="plot" class="box"></div>
+      <div class="box">
+        <div id="form">
+          <div id="curve-coefficients" class="parameters">
+            <p>Curve:</p>
+            <div class="parameter curve-coefficient"><label for="coefficient-a">a</label><input id="coefficient-a" name="a" value="-7" type="number" step="any"></div>
+            <div class="parameter curve-coefficient"><label for="coefficient-b">b</label><input id="coefficient-b" name="b" value="10" type="number" step="any"></div>
+          </div>
+          <div id="scalars" class="parameters">
+            <p><em>n</em>:</p>
+            <div class="parameter multiplication-factor"><label for="scalar-n">n</label><input id="scalar-n" name="n" value="2" type="number" step="1"></div>
+            <div class="placeholder"></div>
+          </div>
+          <div id="point-p-coordinates" class="parameters">
+            <p><em>P</em>:</p>
+            <div class="parameter point-coordinate"><label for="point-p-x">x</label><input id="point-p-x" name="px" value="1" type="number" step="any"></div>
+            <div class="parameter point-coordinate"><label for="point-p-y">y</label><input id="point-p-y" name="py" value="2" type="number" step="any"></div>
+          </div>
+          <div id="point-r-coordinates" class="parameters">
+            <p><em>Q</em> = <em>n</em> &middot; <em>P</em>:</p>
+            <div class="parameter point-coordinate result"><label for="point-q-x">x</label><input id="point-q-x" name="qx" step="any" readonly></div>
+            <div class="parameter point-coordinate result"><label for="point-q-y">y</label><input id="point-q-y" name="qy" step="any" readonly></div>
+          </div>
+        </div>
+        <div id="summary">
+          <p>Scalar multiplication over the elliptic curve <span class="curve-equation"></span> in &#8477;.</p>
+          <p class="curve-singular-warning"><strong>Warning:</strong> this curve is singular.</p>
+        </div>
+      </div>
+    </main>
+    <script type="text/javascript">
+        $(function() {
+            $.ec.curve = new $.ec.reals.ScalarMultiplication();
+        });
+    </script>
+  </body>
+</html>
