@@ -60,9 +60,9 @@
     };
 
     var setInputValuesFromHash = function() {
-        var hash = window.location.hash;
+        var hash = window.location.search;
 
-        if( hash[ 0 ] === "#" ) {
+        if( hash[ 0 ] === "?" ) {
             hash = hash.substr( 1 );
         }
 
