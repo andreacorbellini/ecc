@@ -5,22 +5,27 @@
 
 html, body {
   min-width: 600px;
+  background-color: #f0f0f0;
 }
 
 html, body, input {
-  color: #7f8d8c;
+  color: #000000;
   font-size: 1.125rem;
   font-family: "Source Sans Pro", sans-serif;
   line-height: 1.5;
 }
 
+a {
+  color: #a84646;
+}
+
 header {
+  padding-bottom: 10px;
   text-align: center;
 }
 
 header h1 {
   color: #000000;
-  text-transform: uppercase;
   margin: 0;
 }
 
@@ -48,19 +53,24 @@ header nav ul li:last-child {
 }
 
 header nav ul li a {
-  font-weight: 900;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+header nav ul li a.active {
+  font-weight: 900;
   color: #000000;
 }
 
-header nav ul li a.active,
-header nav ul li a:hover {
-  color: #3fc380;
+footer {
+  padding: 20px 60px;
+  font-size: 18px;
 }
 
 main {
+  padding: 20px 0;
   text-align: center;
+  background-color: #ffffff;
 }
 
 label {
@@ -76,7 +86,6 @@ main .box {
 main #plot {
   width: 600px;
   height: 600px;
-  margin: 1em .5em 0 .5em;
 }
 
 main #form {

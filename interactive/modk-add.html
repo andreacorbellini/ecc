@@ -12,7 +12,6 @@
   <body>
     <header>
       <h1>Elliptic Curve point addition (&#120125;<sub>p</sub>)</h1>
-      <p>A set of tools to play with elliptic curves in real and finite fields.</p>
       <nav>
         <ul>
           <li class="field">&#8477;</li>
@@ -55,13 +54,17 @@
           </div>
         </div>
         <div id="summary">
-          <p>Point addition over the elliptic curve <span class="curve-equation"></span> in &#120125;/<span class="field-order"></span>.</p>
+          <p>Point addition over the elliptic curve <span class="curve-equation"></span> in &#120125;<sub class="field-order"></sub>.</p>
           <p>The curve has <span class="curve-order"></span> points (including the point at infinity).</p>
           <p class="curve-singular-warning"><strong>Warning:</strong> this curve is singular.</p>
           <p class="composite-warning"><strong>Warning:</strong> <em>p</em> is not a prime.</p>
         </div>
       </div>
     </main>
+    <footer>
+      <p>This tool was created for <a href="http://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">Elliptic Curve Cryptography: a gentle introduction</a>.</p>
+      <p>It's free software, released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>, hosted on <a href="https://github.com/andreacorbellini/ecc">GitHub</a> and served by <a href="http://rawgit.com/">RawGit</a>.</p>
+    </footer>
     <script type="text/javascript">
         $(function() {
             $.ec.curve = new $.ec.modk.PointAddition();
