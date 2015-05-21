@@ -5,6 +5,7 @@
     <title>Elliptic Curve screenshot (&#8484;/k)</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
+    <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
     <script type="text/javascript" src="../interactive/ec.js"></script>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic&#038;subset=latin%2Clatin-ext">
     <link rel="stylesheet" type="text/css" href="../interactive/ec.css">
@@ -24,6 +25,11 @@
             <div class="parameter curve-coefficient"><label for="coefficient-k">k</label><input id="coefficient-k" name="k" value="11" type="number" step="1"></div>
             <div class="placeholder"></div>
           </div>
+          <div id="axes-step" class="parameters">
+            <p>Step:</p>
+            <div class="parameter"><label for="step">s</label><input id="step" name="step" value="2" type="number" step="1"></div>
+            <div class="placeholder"></div>
+          </div>
         </div>
       </div>
     </main>
@@ -31,11 +37,34 @@
     <script type="text/javascript">
         $(function() {
             $.ec.curve = new $.ec.modk.Base();
-            $.ec.curve.hideGrid();
+
+            $( "#step" ).change(function() {
+                var step = $( this ).val();
+                var axes = $.ec.curve.plot.getAxes();
+
+                axes.xaxis.options.tickSize = +step;
+                axes.xaxis.options.tickDecimals = 0;
+                axes.yaxis.options.tickSize = +step;
+                axes.yaxis.options.tickDecimals = 0;
+
+                $.ec.curve.update();
+            });
+
+            $.ec.curve.getPlotRange = function( points ) {
+                return {
+                    xMin: 0, xMax: this.k - 1,
+                    yMin: 0, yMax: this.k - 1
+                };
+            };
 
             $( "a" ).click(function() {
-                var png = $( "canvas" )[ 0 ].toDataURL( "image/png" );
-                $( "<img/>" ).attr( "src", png ).appendTo( "main" );
+                html2canvas($(" #plot" ), {
+                    onrendered: function( canvas ) {
+                        var png = canvas.toDataURL( "image/png" );
+                        $( "<img/>" ).attr( "src", png ).appendTo( "main" );
+                    }
+                });
+
                 return false;
             });
         });
