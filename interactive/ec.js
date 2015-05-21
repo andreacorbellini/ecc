@@ -113,6 +113,8 @@
         this.equationContainer = $( ".curve-equation" );
         this.singularWarning = $( ".curve-singular-warning" );
 
+        this.marginFactor = 1 / 8;
+
         this.plot = $.plot( this.plotContainer, {} );
 
         var curve = this;
@@ -242,23 +244,29 @@
             yMax = Math.max( yMax, p[ 1 ] );
         }
 
-        // Add some margin for better display.
-        var xMargin = ( xMax - xMin ) / 8;
-        var yMargin = ( yMax - yMin ) / 8;
+        if( this.marginFactor ) {
+            // Add some margin for better display.
+            var xMargin = this.marginFactor * ( xMax - xMin );
+            var yMargin = this.marginFactor * ( yMax - yMin );
 
-        // Adjust proportions so that x:y = 1.
-        if( xMargin > yMargin ) {
-            yMargin = ( ( xMax - xMin ) - ( yMax - yMin ) ) / 2 + xMargin;
+            // Adjust proportions so that x:y = 1.
+            if( xMargin > yMargin ) {
+                yMargin = ( ( xMax - xMin ) - ( yMax - yMin ) ) / 2 + xMargin;
+            }
+            else {
+                xMargin = ( ( yMax - yMin ) - ( xMax - xMin ) ) / 2 + yMargin;
+            }
+
+            if( xMargin === 0 ) {
+                // This means that xMax = xMin and yMax = yMin, which is not
+                // acceptable.
+                xMargin = 5;
+                yMargin = 5;
+            }
         }
         else {
-            xMargin = ( ( yMax - yMin ) - ( xMax - xMin ) ) / 2 + yMargin;
-        }
-
-        if( xMargin === 0 ) {
-            // This means that xMax = xMin and yMax = yMin, which is not
-            // acceptable.
-            xMargin = 5;
-            yMargin = 5;
+            var xMargin = 0;
+            var yMargin = 0;
         }
 
         return {
@@ -961,6 +969,7 @@
     $.ec.modk.Base = function() {
         $.ec.Base.call( this );
 
+        this.marginFactor = 0;
         this.kInput = $( "input[name='k']" );
 
         this.compositeWarning = $( ".composite-warning" );
@@ -1225,7 +1234,7 @@
         data.push({
             color: colors.blue,
             data: this.curvePoints,
-            points: { show: true, radius: 5 }
+            points: { show: true, radius: 3 }
         });
 
         return data;
