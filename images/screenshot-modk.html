@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Elliptic Curve screenshot (&#8484;/k)</title>
+    <title>Elliptic Curve screenshot (&#120125;<sub>p</sub>)</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
     <script type="text/javascript" src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
@@ -22,7 +22,7 @@
           </div>
           <div id="field-coefficients" class="parameters">
             <p>Field:</p>
-            <div class="parameter curve-coefficient"><label for="coefficient-k">k</label><input id="coefficient-k" name="k" value="11" type="number" step="1"></div>
+            <div class="parameter curve-coefficient"><label for="coefficient-p">p</label><input id="coefficient-p" name="p" value="11" type="number" step="1"></div>
             <div class="placeholder"></div>
           </div>
           <div id="axes-step" class="parameters">
@@ -52,8 +52,8 @@
 
             $.ec.curve.getPlotRange = function( points ) {
                 return {
-                    xMin: 0, xMax: this.k - 1,
-                    yMin: 0, yMax: this.k - 1
+                    xMin: 0, xMax: this.p - 1,
+                    yMin: 0, yMax: this.p - 1
                 };
             };
 

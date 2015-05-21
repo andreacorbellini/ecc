@@ -970,7 +970,7 @@
         $.ec.Base.call( this );
 
         this.marginFactor = 0;
-        this.kInput = $( "input[name='k']" );
+        this.kInput = $( "input[name='p']" );
 
         this.compositeWarning = $( ".composite-warning" );
         this.fieldOrder = $( ".field-order" );
