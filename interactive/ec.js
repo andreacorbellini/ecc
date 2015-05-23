@@ -211,10 +211,15 @@
             p = this.negPoint( p );
         }
 
-        var q = p;
+        var q = null;
 
-        for( var i = 1; i < n; i += 1 ) {
-            q = this.addPoints( p, q );
+        while( n ) {
+            if( n & 1 ) {
+                q = this.addPoints( p, q );
+            }
+
+            p = this.addPoints( p, p );
+            n >>= 1;
         }
 
         return q;
