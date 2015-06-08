@@ -36,7 +36,6 @@ def compute_all(func):
 
             if x != y:
                 print('\nERROR: expected {}, got: {}'.format(x, y))
-                import pdb; pdb.set_trace()
 
             if i % 100 == 0:
                 print('\rComputing all logarithms: {:.2f}% done'
