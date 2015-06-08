@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+# This script makes use of another module: common.py, which can be
+# found on GitHub:
+#
+#  https://github.com/andreacorbellini/ecc/blob/master/logs/common.py
+#
+# You must place that module on the same directory of this script
+# prior to running it.
+
 import random
 
 from common import inverse_mod, tinycurve as curve
