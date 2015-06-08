@@ -126,7 +126,7 @@ def scalar_mult(k, point):
     """Returns k * point computed using the double and point_add algorithm."""
     assert is_on_curve(point)
 
-    if k % curve.p == 0 or point is None:
+    if k % curve.n == 0 or point is None:
         return None
 
     if k < 0:
