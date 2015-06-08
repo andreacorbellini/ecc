@@ -1,6 +1,3 @@
-import random
-
-
 class EllipticCurve:
     """An elliptic curve over a prime field.
 
