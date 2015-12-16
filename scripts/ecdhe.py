@@ -47,7 +47,7 @@ def inverse_mod(k, p):
         quotient = old_r // r
         old_r, r = r, old_r - quotient * r
         old_s, s = s, old_s - quotient * s
-        old_t, t = t, old_s - quotient * t
+        old_t, t = t, old_t - quotient * t
 
     gcd, x, y = old_r, old_s, old_t
 
