@@ -22,7 +22,7 @@ curve = EllipticCurve(
 )
 
 
-# Modular arithmetic ##########################################################
+# Modular arithmetic #########################################################
 
 def inverse_mod(k, p):
     """Returns the inverse of k modulo p.
