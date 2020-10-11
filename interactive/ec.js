@@ -1094,6 +1094,8 @@
             }
         }
 
+        m %= this.k;
+
         var x3 = ( m * m - x1 - x2 ) % this.k;
         var y3 = ( m * ( x1 - x3 ) - y1 ) % this.k;
 
