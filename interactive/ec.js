@@ -91,20 +91,24 @@
         }
     };
 
-    var isPrime = function( n ) {
+    var isPrime = function (n) {
         n = +n;
 
         if( n < 2 || n % 2 === 0 ) {
             return n === 2;
         }
 
-        for( var m = 3; m < n; m += 2 ) {
-            if( n % m === 0 ) {
-                return false;
+        let prime = n !== 1;
+        const sqrtN = Math.floor(Math.sqrt(n));
+
+        for (var m = 3; m < sqrtN + 1; m += 2) {
+            if (n % m === 0) {
+                prime = false;
+                break;
             }
         }
 
-        return true;
+        return prime;
     };
 
     ///////////////////////////////////////////////////////////////////////////
