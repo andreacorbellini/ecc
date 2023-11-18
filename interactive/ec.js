@@ -329,8 +329,6 @@
     };
 
     $.ec.Base.prototype.recalculate = function() {
-        this.singular =
-            ( 4 * this.a * this.a * this.a + 27 * this.b * this.b ) === 0;
         // Order is important.
         this.roots = this.getRoots();
         this.plotRange = this.getPlotRange();
@@ -731,6 +729,8 @@
     };
 
     $.ec.reals.Base.prototype.recalculate = function() {
+        this.singular =
+            ( 4 * this.a * this.a * this.a + 27 * this.b * this.b ) === 0;
         this.stationaryPoints = this.getStationaryPoints();
         $.ec.Base.prototype.recalculate.call( this );
     };
@@ -1441,6 +1441,8 @@
     };
 
     $.ec.modk.PointAddition.prototype.recalculate = function() {
+        this.singular =
+            ( 4 * this.a * this.a * this.a + 27 * this.b * this.b ) % this.k === 0;
         this.r = this.addPoints( this.p, this.q );
         $.ec.modk.Base.prototype.recalculate.call( this );
     };
