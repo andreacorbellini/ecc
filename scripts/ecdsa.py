@@ -163,7 +163,7 @@ def make_keypair():
 
 
 def hash_message(message):
-    """Returns the truncated SHA521 hash of the message."""
+    """Returns the truncated SHA512 hash of the message."""
     message_hash = hashlib.sha512(message).digest()
     e = int.from_bytes(message_hash, 'big')
 
